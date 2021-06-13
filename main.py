@@ -5,7 +5,7 @@ import random
 
 # 打开界面与说明
 print("--------------------------------------------------------")
-print("------------欢迎使用舒尔特方格xlsx创建器 V1.5----------------")
+print("------------欢迎使用舒尔特方格xlsx创建器 V1.6----------------")
 print("--注意：本程序默认将文件创建在当前目录下,建议放在一个空文件夹中操作---")
 print("------------因为遇到重名文件时，原始文件将被修改----------------")
 print("---------------本次创建文件数量上限为100个-------------------")
@@ -87,10 +87,9 @@ while i < number + 1:  # 创建number个xls文件
         # 在文件中写数
 
         sht1.write(x_dimension, y_dimension, str(arr[random_number]),my_style)
-        if random_number != random_number_size:
-            arr[random_number:] = arr[random_number+1:]
-        else:
-            arr.pop()
+        
+        # 序列字符串中删除选中的数字
+        del arr[random_number]
 
 
         # 序列字符串中删除选中的数字
