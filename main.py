@@ -5,7 +5,7 @@ import random
 
 # 打开界面与说明
 print("--------------------------------------------------------")
-print("------------欢迎使用舒尔特方格xlsx创建器 V1.4----------------")
+print("------------欢迎使用舒尔特方格xlsx创建器 V1.5----------------")
 print("--注意：本程序默认将文件创建在当前目录下,建议放在一个空文件夹中操作---")
 print("------------因为遇到重名文件时，原始文件将被修改----------------")
 print("---------------本次创建文件数量上限为100个-------------------")
@@ -42,13 +42,19 @@ while check_build_size == 0:  # 输入创建个数
 # 创建文件
 i = 1
 total_size = size * size
-borders = xlwt.Borders()
+
+
 my_style = xlwt.XFStyle()
-my_style.borders = borders  # 设置边框
+
+al = xlwt.Alignment()
+al.horz = 0x02 # 设置水平居中
+al.vert = 0x01 # 设置垂直居中
+my_style.alignment = al
 
 # 边框格式
 # 细实线:1，小粗实线:2，细虚线:3，中细虚线:4，大粗实线:5，双线:6，细点虚线:7
 # 大粗虚线:8，细点划线:9，粗点划线:10，细双点划线:11，粗双点划线:12，斜点划线:13
+borders = xlwt.Borders()
 borders.left = 2
 borders.right = 2
 borders.top = 2
@@ -57,6 +63,8 @@ borders.left_colour = 0x08
 borders.right_colour = 8
 borders.top_colour = 8
 borders.bottom_colour = 8
+my_style.borders = borders  # 设置边框
+
 
 while i < number + 1:  # 创建number个xls文件
 
